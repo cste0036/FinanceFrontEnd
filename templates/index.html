@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+<table>
+    <tr>
+        <th>Symbol</th>
+        <th>Shares</th>
+        <th>Price</th>
+        <th>TOTAL</th>
+    </tr>
+
+    {% for item in row %}
+
+        <tr>
+            <td>{{ item["symbol"] }}</td>
+            <td>{{ item["shares"] }}</td>
+            <td>{{ item["price"] | usd }}</td>
+            <td>{{ item["total"] | usd }}</td>
+        </tr>
+
+    {% endfor %}
+
+    <tr>
+        <td><b>CASH</b></td>
+        <td></td>
+        <td></td>
+        <td><b>{{ cash | usd }}</b></td>
+    </tr>
+
+    <tr>
+        <td colspan="3"></td>
+        <td><b>{{ total | usd }}</b></td>
+    </tr>
+
+</table>
+{% endblock %}
